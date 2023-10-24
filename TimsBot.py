@@ -109,26 +109,24 @@ def next():
 
 #//////////////////7/////////////////////////////////////////#
 
-def wait_for_load():
-    # try:
-    #     load = WebDriverWait(driver, 10).until(
-    #         EC.presence_of_element_located((By.CSS_SELECTOR, next_button_css))
-    #     )
-    # finally:
-    #     time.sleep(1)
-    time.sleep(3)
+def wait_for_load(element):
+    while True:
+        try:
+            driver.find_element(By.CSS_SELECTOR, element)
+            break
+        except:
+            pass
 
 #//////////////////7/////////////////////////////////////////#
 
-wait_for_load()
-# time.sleep(1)
-
-try:
-    restaurant_number_field = driver.find_element(By.CSS_SELECTOR, restaurant_number_css)
-except:
-    print("Error: restaurant number id invalid")
-    driver.close()
-    exit()
+# wait_for_load()
+time.sleep(2)
+while True:
+    try:
+        restaurant_number_field = driver.find_element(By.CSS_SELECTOR, restaurant_number_css)
+        break
+    except:
+        print("Error: restaurant number id invalid")
 restaurant_number_field.send_keys("821107")
 
 
@@ -165,18 +163,13 @@ except:
     exit()
 day_of_visit_field.click()
 
-try:
-    time_of_visit_hour_field = driver.find_element(By.CSS_SELECTOR, time_of_visit_hour_css)
-    time_of_visit_hour_field.click()
-except:
-    time.sleep(0.5)
+while True:
     try:
         time_of_visit_hour_field = driver.find_element(By.CSS_SELECTOR, time_of_visit_hour_css)
         time_of_visit_hour_field.click()
+        break
     except:
         print("Error: time of visit hour id invalid")
-        driver.close()
-        exit()
 
 
 try:
@@ -221,71 +214,66 @@ time_of_visit_ampm_selection_field.click()
 
 next()
 
-wait_for_load()
+time.sleep(2)
 
 next()
 
-wait_for_load()
-
-try:
-    q1_answer_field = driver.find_element(By.CSS_SELECTOR, q1_answer_css)
-except:
-    print("Error: q1 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q1_answer_field = driver.find_element(By.CSS_SELECTOR, q1_answer_css)
+        break
+    except:
+        print("Error: q1 answer id invalid")
 q1_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q2_answer_field = driver.find_element(By.CSS_SELECTOR, q2_answer_css)
-except:
-    print("Error: q2 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q2_answer_field = driver.find_element(By.CSS_SELECTOR, q2_answer_css)
+        break
+    except:
+        print("Error: q2 answer id invalid")
 q2_answer_field.send_keys(answers[random.randint(0, len(answers) - 1)])
 
 next()
 
-wait_for_load()
-
-try:
-    q3_answer_field = driver.find_element(By.CSS_SELECTOR, q3_answer_css)
-except:
-    print("Error: q3 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q3_answer_field = driver.find_element(By.CSS_SELECTOR, q3_answer_css)
+        break
+    except:
+        print("Error: q3 answer id invalid")
 q3_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q4_answer_field = driver.find_element(By.CSS_SELECTOR, q4_answer_css)
-except:
-    print("Error: q4 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q4_answer_field = driver.find_element(By.CSS_SELECTOR, q4_answer_css)
+        break
+    except:
+        print("Error: q4 answer id invalid")
 q4_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q5_a_answer_field = driver.find_element(By.CSS_SELECTOR, q5_a_answer_css)
-except:
-    print("Error: q5 a answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q5_a_answer_field = driver.find_element(By.CSS_SELECTOR, q5_a_answer_css)
+        break
+    except:
+        print("Error: q5 a answer id invalid")
 q5_a_answer_field.click()
 
 next()
 
-wait_for_load()
+while True:
+    try:
+        driver.find_element(By.CSS_SELECTOR, q6_answer_css.format("1"))
+        break
+    except:
+        print("Error: q5 b answer id invalid")
 
 for i in range(1, 10):
     try:
@@ -298,18 +286,16 @@ for i in range(1, 10):
 
 next()
 
-wait_for_load()
+time.sleep(1)
 
 next()
 
-wait_for_load()
-
-try:
-    q7_a_answer_field = driver.find_element(By.CSS_SELECTOR, q7_answer_css.format("1"))
-except:
-    print("Error: q7 a answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q7_a_answer_field = driver.find_element(By.CSS_SELECTOR, q7_answer_css.format("1"))
+        break
+    except:
+        print("Error: q7 a answer id invalid")
 
 try:
     q7_b_answer_field = driver.find_element(By.CSS_SELECTOR, q7_answer_css.format("2"))
@@ -322,133 +308,119 @@ q7_b_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q8_answer_field = driver.find_element(By.CSS_SELECTOR, q8_answer_css)
-except:
-    print("Error: q8 answer id invalid")
-    driver.close()
-    exit()  
+while True:
+    try:
+        q8_answer_field = driver.find_element(By.CSS_SELECTOR, q8_answer_css)
+        break
+    except:
+        print("Error: q8 answer id invalid")
 q8_answer_field.click()
 
 next()
 
-wait_for_load()
+time.sleep(1)
 
-try:
-    q9_answer_field = driver.find_element(By.CSS_SELECTOR, q9_answer_css)
-except:
-    print("Error: q9 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q9_answer_field = driver.find_element(By.CSS_SELECTOR, q9_answer_css)
+        break
+    except:
+        print("Error: q9 answer id invalid")
 q9_answer_field.click()
 
 next()
 
-wait_for_load()
+wait_for_load(q10_answer_css)
 
+# while True:
 try:
     q10_answer_field = driver.find_element(By.CSS_SELECTOR, q10_answer_css)
+    # break
 except:
     print("Error: q10 answer id invalid")
-    driver.close()
-    exit()
 q10_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q11_answer_field = driver.find_element(By.CSS_SELECTOR, q11_answer_css)
-except:
-    print("Error: q11 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q11_answer_field = driver.find_element(By.CSS_SELECTOR, q11_answer_css)
+        break
+    except:
+        print("Error: q11 answer id invalid")
 q11_answer_field.click()
 
 next()
 
-wait_for_load()
-
 for i in range(1, 4):
-    try:
-        q12_answer_field = driver.find_element(By.CSS_SELECTOR, q12_answer_css.format(i))
-    except:
-        print("Error: q12 {} answer id invalid".format(q12_answer_css.format(str(i))))
-        driver.close()
-        exit()
+    while True:
+        try:
+            q12_answer_field = driver.find_element(By.CSS_SELECTOR, q12_answer_css.format(i))
+            break
+        except:
+            print("Error: q12 {} answer id invalid".format(q12_answer_css.format(str(i))))
     q12_answer_field.click()
 
 next()
 
-wait_for_load()
+time.sleep(1)
 
 for i in range(1, 6):
-    try:
-        q13_answer_field = driver.find_element(By.CSS_SELECTOR, q13_answer_css.format(i))
-    except:
-        print("Error: q13 {} answer id invalid".format(q13_answer_css.format(str(i))))
-        driver.close()
-        exit()
+    while True:
+        try:
+            q13_answer_field = driver.find_element(By.CSS_SELECTOR, q13_answer_css.format(i))
+            break
+        except:
+            print("Error: q13 {} answer id invalid".format(q13_answer_css.format(str(i))))
     q13_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q14_answer_field = driver.find_element(By.CSS_SELECTOR, q14_answer_css)
-except:
-    print("Error: q14 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q14_answer_field = driver.find_element(By.CSS_SELECTOR, q14_answer_css)
+        break
+    except:
+        print("Error: q14 answer id invalid")
 q14_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q15_answer_field = driver.find_element(By.CSS_SELECTOR, q15_answer_css)
-except:
-    print("Error: q15 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q15_answer_field = driver.find_element(By.CSS_SELECTOR, q15_answer_css)
+        break
+    except:
+        print("Error: q15 answer id invalid")
 q15_answer_field.send_keys(answers[random.randint(0, len(answers) - 1)])
 
 next()
 
-wait_for_load()
-
-try:
-    q16_answer_field = driver.find_element(By.CSS_SELECTOR, q16_answer_css)
-except:
-    print("Error: q16 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q16_answer_field = driver.find_element(By.CSS_SELECTOR, q16_answer_css)
+        break
+    except:
+        print("Error: q16 answer id invalid")
 q16_answer_field.send_keys("no")
 
 next()
 
-wait_for_load()
-
-try:
-    q17_answer_field = driver.find_element(By.CSS_SELECTOR, q17_answer_css)
-except:
-    print("Error: q17 answer id invalid")
-    driver.close()
-    exit()
+while True:
+    try:
+        q17_answer_field = driver.find_element(By.CSS_SELECTOR, q17_answer_css)
+        break
+    except:
+        print("Error: q17 answer id invalid")
 q17_answer_field.click()
 
 next()
 
-wait_for_load()
+time.sleep(1)
 
 next()
 
-wait_for_load()
+wait_for_load(q18_answer_css)
 
 try:
     q18_answer_field = driver.find_element(By.CSS_SELECTOR, q18_answer_css)
@@ -460,7 +432,9 @@ q18_answer_field.click()
 
 next()
 
-wait_for_load()
+time.sleep(0.5)
+
+wait_for_load(q19_answer_css)
 
 try:
     q19_answer_field = driver.find_element(By.CSS_SELECTOR, q19_answer_css)
@@ -472,14 +446,12 @@ q19_answer_field.click()
 
 next()
 
-wait_for_load()
-
-try:
-    q20_answer_field = driver.find_element(By.CSS_SELECTOR, q20_answer_css)
-except:
-    print("Error: q20 answer id invalid")
-    driver.close()
-    exit()
-q20_answer_field.click()
+while True:
+    try:
+        q20_answer_field = driver.find_element(By.CSS_SELECTOR, q20_answer_css)
+        q20_answer_field.click()
+        break
+    except:
+        print("Error: q20 answer id invalid")
 
 next()
